@@ -215,6 +215,7 @@ public class ThongTinPhongHocPanel extends JPanel{
 
             // Tạo danh sách tìm kiếm Thông Tin Phòng Học
             List<ThongTinPhongHoc> ttList;
+            clearInputFields();
 
             // Tìm kiếm theo Mã Phòng Học (nếu có)
             if (ttPH.getMaPhongHoc() != null) {
@@ -250,6 +251,11 @@ public class ThongTinPhongHocPanel extends JPanel{
             // Khởi tạo đối tượng ThongTinPhongHocTable để hiển thị dữ liệu
             ThongTinPhongHocTable model = new ThongTinPhongHocTable(ttList);
 
+            if (ttList.isEmpty()) {
+                // Hiển thị thông báo lỗi "Không tìm thấy thông tin"
+                JOptionPane.showMessageDialog(this, "Không tìm thấy thông tin phòng học phù hợp với yêu cầu tìm kiếm!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+              }
             // Thiết lập model cho bảng thongTinPhongHocTable (model chứa dữ liệu để hiển thị trên bảng)
             thongTinPhongHocTable.setModel(model);
         } catch (Exception e) {

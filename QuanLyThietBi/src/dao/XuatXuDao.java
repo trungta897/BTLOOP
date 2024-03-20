@@ -244,7 +244,6 @@ public class XuatXuDao {
 
     // Các hàm tìm kiếm còn lại có chức năng tương tự như hàm Tìm kiếm Xuất xứ theo Loại xuất xứ
     // Hàm tìm kiếm Xuất xứ theo Mã thiết bị
-    @SuppressWarnings("null")
     public List<XuatXu> timXuatXuTheoMa(Integer MaThietBi) {
         List<XuatXu> xxs = new ArrayList<>();
         PreparedStatement stmt = null;
@@ -253,7 +252,7 @@ public class XuatXuDao {
 
         try {
             connection = DBConnection.getConnection();
-            connection.prepareStatement(query);
+            stmt = connection.prepareStatement(query);
             stmt.setInt(1, MaThietBi);
 
             try {

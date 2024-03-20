@@ -201,6 +201,7 @@ public class ThietBiPanel extends JPanel {
 
             // Tạo danh sách tìm kiếm Thiết Bị
             List<ThietBi> tbs;
+            clearInputField();
 
             // TÌm kiếm theo Mã Thiết Bị (nếu có)
             if (tb.getMaThietBi() != null) {
@@ -231,6 +232,11 @@ public class ThietBiPanel extends JPanel {
             // Cập nhật dữ liệu bảng với kết quả tìm kiếm:
             // Khởi tạo đối tượng ThietBiTable để hiển thị dữ liệu
             ThietBiTable model = new ThietBiTable(tbs);
+            if (tbs.isEmpty()) {
+                // Hiển thị thông báo lỗi "Không tìm thấy thông tin"
+                hienThongBaoLoi("Không tìm thấy thông tin thiết bị phù hợp với yêu cầu tìm kiếm!");
+                return;
+              }
 
             // Thiết lập model cho bảng ThietBiTable (model chứa dữ liệu để hiển thị)
             tbTable.setModel(model);

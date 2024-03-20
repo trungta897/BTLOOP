@@ -173,6 +173,7 @@ public class XuatXuPanel extends JPanel {
 
             // Tạo danh sách tìm kiếm Xuất Xứ
             List<XuatXu> xxList;
+            clearInputFields();
 
             // Tìm kiếm theo Mã Thiết Bị (nếu có)
             if (xxs.getMaThietBi() != null) {
@@ -191,6 +192,11 @@ public class XuatXuPanel extends JPanel {
             // Cập nhật dữ liệu bảng với kết quả tìm kiếm:
             // Khởi tạo đối tượng XuatXuTable để hiển thị dữ liệu 
             XuatXuTable model = new XuatXuTable(xxList);
+            if (xxList.isEmpty()) {
+                // Hiển thị thông báo lỗi "Không tìm thấy thông tin"
+                JOptionPane.showMessageDialog(this, "Không tìm thấy thông tin phòng học phù hợp với yêu cầu tìm kiếm!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                return;
+              }
 
             // Thiết lập model cho bảng xuatXuTable (model chứa dữ liệu hiển thị trên bảng)
             xuatXuTable.setModel(model);
