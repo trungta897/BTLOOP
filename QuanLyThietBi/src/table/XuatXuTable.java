@@ -15,7 +15,7 @@ public class XuatXuTable extends AbstractTableModel {
     private List<XuatXu> XuatXuList;
 
     // Tên các cột của bảng
-    private final String[] columnNames = {"Mã Xuất Xứ","Loại Xuất Xứ"};
+    private final String[] columnNames = {"Mã Thiết Bị","Loại Xuất Xứ"};
 
     // Khởi tạo đối tượng XuatXuTable với danh sách Xuất Xứ
     public XuatXuTable(List<XuatXu> XuatXuList) {

@@ -19,13 +19,13 @@ public class LoginFrame extends JFrame {
     private JButton loginButton, registerButton;
 
     // Giả định danh sách người dùng đã đăng ký với hệ thống
-    private List<User> Users;
+    private List<User> UsersList;
 
     public LoginFrame() {
-        Users = new ArrayList<>();
+        UsersList = new ArrayList<>();
         // Thêm một số người dùng ví dụ
-        Users.add(new User("trungta897", "trungta897"));
-        Users.add(new User("user1", "pass1"));
+        UsersList.add(new User("trungta897", "trungta897"));
+        UsersList.add(new User("Admin", "admin"));
 
         setTitle("Đăng nhập");
         setSize(400, 200);
@@ -152,7 +152,8 @@ public class LoginFrame extends JFrame {
             }
 
             // Thêm người dùng mới vào danh sách đăng ký
-            Users.add(new User(username, password));
+            User newUser = new User(username, password);
+            UsersList.add(newUser);
 
             JOptionPane.showMessageDialog(this, "Đăng ký thành công cho người dùng: " + username);
             clearInputField();
@@ -163,7 +164,7 @@ public class LoginFrame extends JFrame {
 
     // Hàm kiểm tra xem tên đăng nhập đã tồn tại hay chưa
     private boolean kiemTraTonTai(String username) {
-        for (User user : Users) {
+        for (User user : UsersList) {
             if (user.getUsername().equals(username)) {
                 return true;
             }
@@ -183,7 +184,7 @@ public class LoginFrame extends JFrame {
 
     // Hàm kiểm tra tính xác thực của tên người dùng và mật khẩu
     private User timUser(String username, String password) {
-        for (User user : Users) {
+        for (User user : UsersList) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return user;
             }
